@@ -6,10 +6,8 @@ internal class Section
 
     public int Id { get; private set; }
     public string Name { get; private set; }
-    private readonly List<Product> _products = new List<Product>();
+    private readonly List<Product.Product> _products = new List<Product.Product>();
     public int NumberOfProducts => _products.Count;
-
-    public int TotalStock => (int)_products.Sum(p => p.Stock);
 
 
     public Section(string name)
@@ -18,7 +16,7 @@ internal class Section
         Name = name;
     }
 
-    public void AddProduct(Product product)
+    public void AddProduct(Product.Product product)
     {
         _products.Add(product);
     }
@@ -28,6 +26,5 @@ internal class Section
         Console.WriteLine($"Id: {Id}");
         Console.WriteLine($"Section: {Name}");
         Console.WriteLine($"Products: {NumberOfProducts}");
-        Console.WriteLine($"Total Stock: {TotalStock}");
     }
 }

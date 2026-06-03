@@ -1,4 +1,4 @@
-﻿namespace MegaStore.Model;
+﻿namespace MegaStore.Model.Product;
 
 internal class Product
 {
@@ -9,9 +9,9 @@ internal class Product
     public string Brand { get; private set; }
     public double Price { get; private set; }
     public Section Section { get; private set; }
-    public double Stock { get; private set; }
+    public virtual bool Available { get; protected set; }
 
-    public Product(string name, string brand, double price, Section section, double quantityAvailable)
+    public Product(string name, string brand, double price, Section section)
     {
         Id = _nextId++;
 
@@ -19,7 +19,6 @@ internal class Product
         Brand = brand;
         Price = price;
         Section = section;
-        Stock = quantityAvailable;
         section.AddProduct(this);
     }
 
@@ -30,11 +29,10 @@ internal class Product
         Console.WriteLine($"Brand: {Brand}");
         Console.WriteLine($"Price: ${Price:F2}");
         Console.WriteLine($"Section: {Section.Name}");
-        Console.WriteLine($"Stock: {Stock}");
     }
 
     public void DisplayProductSummary()
     {
-        Console.WriteLine($"    Id:{Id} - Name:{Name} - Brand:{Brand} - Quantity:{Stock}");
+        Console.WriteLine($"    Id:{Id} - Name:{Name} - Brand:{Brand}");
     }
 }

@@ -1,4 +1,6 @@
 ﻿using MegaStore.Model;
+using MegaStore.Model.Product;
+using MegaStore.Model.Product.DigitalProduct;
 
 namespace MegaStore.Controller;
 
@@ -27,14 +29,17 @@ internal class Controller
         sections.Add(new Section("Grains"));
         sections.Add(new Section("Sweets"));
         sections.Add(new Section("Baking"));
+        sections.Add(new Section("Digital Products"));
     }
 
     public void CreateStartProducts()
     {
-        products.Add(new Product("Rice", "Golden Field", 5.17, sections[0], 2));
-        products.Add(new Product("Rice", "Top Rice", 7, sections[0], 7));
-        products.Add(new Product("Sugar", "Sweet Delight", 3.49, sections[1], 10));
-        products.Add(new Product("Flour", "Baker's Choice", 2.99, sections[2], 11));
+        products.Add(new PhysicalProduct("Rice", "Golden Field", 5.17, sections[0], 2));
+        products.Add(new PhysicalProduct("Rice", "Top Rice", 7, sections[0], 7));
+        products.Add(new PhysicalProduct("Sugar", "Sweet Delight", 3.49, sections[1], 10));
+        products.Add(new PhysicalProduct("Flour", "Baker's Choice", 2.99, sections[2], 11));
+        products.Add(new DigitalProduct("E-book", "Tech Books", 9.99, sections[3], true));
+        products.Add(new TimeLimitedDigitalProduct("Online Course", "LearnFast", 49.99, sections[3], true, 30));
     }
 
     public bool CreateUser(string name, string email, string password)
